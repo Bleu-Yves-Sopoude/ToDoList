@@ -10,13 +10,11 @@ function taskCreator(str) {
   };
   taskList = taskList.concat(task);
 }
-console.log(taskList);
+
 taskCreator('wash the dishes');
 taskCreator('complete the To Do List Project');
 
-
 localStorage.taskListData = JSON.stringify(taskList);
-
 
 const taskShelf = document.querySelector('#to-do-list__shelf');
 
