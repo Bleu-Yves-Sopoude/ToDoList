@@ -1,14 +1,11 @@
 
 import '/Users/mrblue/Music/Microverse/Module 2/Projects/ToDoList/src/styles.css';
 
-
 import populateHtmlForEachTask from '../modules/populateHtmlForEachTask.js';
-
 
 import TasksList from '../modules/tasksListClass.js';
 
 const tasks = new TasksList();
-
 
 const storedTasks = JSON.parse(localStorage.getItem('storedTasks')) || [];
 populateHtmlForEachTask(storedTasks);
@@ -22,16 +19,13 @@ taskValidation.addEventListener('click', () => {
     document.querySelector('.error-message').textContent = "Please, the task's description is required";
   }
   if (taskDescription.value !== '') {
-    
     document.querySelector('.error-message').textContent = '';
     addedTask = { description: taskDescription.value };
-    
     document.querySelectorAll('.task-box').forEach((e) => e.remove());
     populateHtmlForEachTask(tasks.addTask(addedTask));
   }
   taskDescription.value = '';
 });
-
 
 const toDoListBox = document.querySelector('.to-do-list-box');
 toDoListBox.addEventListener('click', (e) => {
@@ -41,12 +35,10 @@ toDoListBox.addEventListener('click', (e) => {
     populateHtmlForEachTask(tasks.deleteTask(index));
   }
 
-  
   if (e.target && e.target.matches('i.edit')) {
     const targetClassList = e.target.classList;
     document.querySelector(`p.${targetClassList[0]}`).focus();
   }
-
 
   if (e.target && e.target.matches('input.check-box')) {
     const targetClassList = e.target.classList;
