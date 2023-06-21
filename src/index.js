@@ -1,36 +1,68 @@
-import './styles.css';
 
-let taskList = [];
+import '/Users/mrblue/Music/Microverse/Module 2/Projects/ToDoList/src/styles.css';
 
-function taskCreator(str) {
-  const task = {
-    description: `${str}`,
-    completed: false,
-    index: taskList.length,
-  };
-  taskList = taskList.concat(task);
-}
 
-taskCreator('wash the dishes');
-taskCreator('complete the To Do List Project');
+import populateHtmlForEachTask from '../modules/populateHtmlForEachTask.js';
 
-localStorage.taskListData = JSON.stringify(taskList);
 
-const taskShelf = document.querySelector('#to-do-list__shelf');
+import TasksList from '../modules/tasksListClass.js';
 
-function printHTML(description, status, index) {
-  taskShelf.insertAdjacentHTML(
-    'beforeend',
-    `<div class="to-do-list__box" index="${index}" completed="${status}">
-<div class="d-row box__icon-text-wraper">
-<i class="bi bi-square to-do-box__check-box-icon"></i>
-<p class="box__text--incomplete">${description}</p>
-</div>
-<i class="bi bi-three-dots-vertical to-do-box__three-dots-icon"></i>
-</div>`,
-  );
-}
+const tasks = new TasksList();
 
-for (let i = 0; i < taskList.length; i += 1) {
-  printHTML(taskList[i].description, taskList[i].completed, taskList[i].index);
-}
+
+const storedTasks = JSON.parse(localStorage.getItem('storedTasks')) || [];
+populateHtmlForEachTask(storedTasks);
+
+const taskDescription = document.querySelector('#taskDescription');
+const taskValidation = document.querySelector('#taskValidation');
+
+taskValidation.addEventListener('click', () => {
+  let addedTask = {};
+  if (taskDescription.value === '') {
+    document.querySelector('.error-message').textContent = "Please, the task's description is required";
+  }
+  if (taskDescription.value !== '') {
+    
+    document.querySelector('.error-message').textContent = '';
+    addedTask = { description: taskDescription.value };
+    
+    document.querySelectorAll('.task-box').forEach((e) => e.remove());
+    populateHtmlForEachTask(tasks.addTask(addedTask));
+  }
+  taskDescription.value = '';
+});
+
+
+const toDoListBox = document.querySelector('.to-do-list-box');
+toDoListBox.addEventListener('click', (e) => {
+  if (e.target && e.target.matches('i.trash')) {
+    const index = Number(e.target.id.replace('d', ''));
+    document.querySelectorAll('.task-box').forEach((e) => e.remove());
+    populateHtmlForEachTask(tasks.deleteTask(index));
+  }
+
+  
+  if (e.target && e.target.matches('i.edit')) {
+    const targetClassList = e.target.classList;
+    document.querySelector(`p.${targetClassList[0]}`).focus();
+  }
+
+
+  if (e.target && e.target.matches('input.check-box')) {
+    const targetClassList = e.target.classList;
+    tasks.changeTaskStatus(Number(targetClassList[0].replace('checkBox', '')));
+  }
+});
+
+toDoListBox.addEventListener('input', (e) => {
+  if (e.target && e.target.matches('p')) {
+    const targetClassList = e.target.classList;
+    tasks.editTask(Number(targetClassList[0].replace('d', '')));
+  }
+});
+
+document.querySelector('.clear-all-completed').addEventListener('click', () => {
+  tasks.clearAllCompleted();
+  document.querySelectorAll('.task-box').forEach((e) => e.remove());
+  populateHtmlForEachTask(tasks.clearAllCompleted());
+});

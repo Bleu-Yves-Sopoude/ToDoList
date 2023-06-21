@@ -1,116 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
+  font-size: 1rem;
 }
 
-body {
-  font-family: "Open Sans", "Lucida Grande", tahoma, verdana, arial, sans-serif;
-  background-color: #dcdcdc;
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
 
-.d-col {
+.flex-column {
   display: flex;
   flex-direction: column;
 }
 
-.d-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.w-100 {
-  width: 100%;
-}
-
-#to-do-list__container {
-  display: flex;
-  align-self: center;
-  justify-self: center;
-  background-color: #fff;
-  box-shadow:
-    rgba(60, 64, 67, 0.05) 0 1px 2px 0,
-    rgba(60, 64, 67, 0.05) 0 2px 6px 2px;
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 300;
-  max-width: 480px;
-  margin: 200px auto;
-}
-
-#to-do-list__container .bi {
-  color: #a2a2a2;
-}
-
-#to-do-list__container .bi:hover {
-  color: #333;
-}
-
-#to-do-list__title {
-  color: #545862;
-  font-weight: 400;
-}
-
-#title-box__refresh-icon {
-  transform: rotate(-60deg) scaleX(-1);
-}
-
-#to-do-list__input {
-  border: 0;
-  font-size: inherit;
-  font-style: italic;
-  width: 100%;
-}
-
-#to-do-list__input::placeholder {
-  color: #bababa;
-  font-weight: 300;
-}
-
-#to-do-list__input:focus {
-  outline: 0;
-}
-
-#input-box__return-icon:hover {
-  color: #a2a2a2 !important;
-}
-
-.to-do-list__box {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 15px;
-  border-bottom: 1px solid #dcdcdc;
-  align-items: center;
-}
-
-.box__icon-text-wraper {
-  gap: 15px;
-  align-items: center;
-}
-
-.box__text--incomplete {
-  text-decoration: none;
-  color: #000;
-}
-
-.box__text--complete {
-  text-decoration: line-through;
-  color: #a2a2a2;
-}
-
-.to-do-box__check-icon {
-  color: #3990e7 !important;
-  font-size: 20px;
-}
-
-#to-do-list__clear-all {
+body {
+  font-family: 'Roboto', sans-serif;
   background-color: #f6f6f6;
-  justify-content: center;
 }
 
-#to-do-list__clear-all p:hover {
+.to-do-section {
+  width: 90%;
+  margin: 20% 5%;
+  box-shadow: 5px 10px 20px #888;
+}
+
+.to-do-list-box {
+  background-color: white;
+}
+
+.to-do-title {
+  border-bottom: 1px solid #888;
+  height: 40px;
+  align-items: center;
+  padding-left: 2%;
+}
+
+.titleBox,
+.inputBox,
+.task-box {
+  position: relative;
+}
+
+i {
+  position: absolute;
+  color: gray;
+  right: 3%;
+  top: 12px;
+  font-size: 15px;
+}
+
+.titleBox i,
+.inputBox i {
+  right: 3%;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+i.trash {
+  right: 7%;
+}
+
+i.edit {
+  right: 12%;
+}
+
+.description-input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #888;
+  padding-left: 2%;
+}
+
+.error-message {
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
+  padding-left: 2%;
+  transition: visibility 5s;
+}
+
+.task-box {
+  border-bottom: 1px solid #888;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-description {
+  width: 75%;
+  height: 40px;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.description-input:focus,
+.task-description:focus,
+.task-box:focus-within {
+  outline: none;
+}
+
+.description-input::placeholder {
+  font-style: italic;
+}
+
+.task-box:focus-within {
+  background-color: #e4e3ae;
+}
+
+.checkBox-and-description-box {
+  padding-left: 2%;
+  gap: 0.5rem;
+  width: 95%;
+}
+
+.check-box:hover {
+  cursor: pointer;
+}
+
+.dots-box {
+  gap: 0.2rem;
+  padding-right: 3%;
+}
+
+.dot {
+  height: 5px;
+  width: 5px;
+  background-color: #8888;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dots-box:hover {
+  cursor: url('../assets/cursor.png'), move;
+}
+
+.dots-box:hover .dot {
+  background-color: #888;
+}
+
+.clear-all-completed {
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.clear-all-completed:hover {
+  cursor: pointer;
   text-decoration: underline;
 }
