@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry:  {
+  entry: {
     bundle: path.resolve(__dirname, 'src/index.js'),
   },
   devServer: {
@@ -32,12 +32,12 @@ module.exports = {
       {
         test: /\.css$/,
 
-        use: ['style-loader', 'css-loader','sass-loader'],
+        use: ['style-loader', 'css-loader','sass-loader'], 
 
       },
 
     ],
 
   },
-  
+
 };
