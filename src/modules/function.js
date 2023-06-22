@@ -19,15 +19,14 @@ export default function addTrash(event) {
   const index = parseInt(listId.substring(1), 10);
 
   function updateTaskDescription(taskIndex, updatedDescription) {
-    tasks = tasks.map((task) => { return task.index === taskIndex ? { ...task, description: updatedDescription } : task;
-    });
+    tasks = tasks.map((task) => { 
+      return task.index === taskIndex ? { ...task, description: updatedDescription } : task; });
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
   function deleteList(taskIndex) {
     tasks = tasks.filter((task) => task.index !== taskIndex);
-    tasks.forEach((task, i) => 
-    { task.index = i + 1; });
+    tasks.forEach((task, i) => { task.index = i + 1; });
     localStorage.setItem('tasks', JSON.stringify(tasks));
     window.location.reload();
   }
