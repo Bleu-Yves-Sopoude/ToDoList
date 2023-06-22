@@ -1,21 +1,5 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-/*function deleteList() {
-  const button = document.querySelectorAll('.newButton');
-  const element = button[0].parentNode;
-  const liItem = element.parentNode;
-  liItem.removeChild(element);
-  const listId = element.getAttribute('id');
-  const index = parseInt(listId.substring(1), 10);
-  tasks = tasks.filter((task) => task.index !== index);
-  for (let i = 0; i < tasks.length; i += 1) {
-    tasks[i].index = i + 1;
-  }
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-  window.location.reload();
-}
-*/
-
 export default function addTrash(event) {
   const eventCatcher = event.target.closest('button');
   eventCatcher.style.display = 'none';
@@ -43,8 +27,7 @@ export default function addTrash(event) {
 
   function deleteList(taskIndex) {
     tasks = tasks.filter((task) => task.index !== taskIndex);
-    tasks.forEach((task, i) => {
-      task.index = i + 1;
+    tasks.forEach((task, i) => { task.index = i + 1;
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
     window.location.reload();
