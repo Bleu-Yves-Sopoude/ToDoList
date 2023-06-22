@@ -32,15 +32,36 @@ export default function addTrash(event) {
   editTask.setAttribute('contenteditable', true);
   const listId = parentLi.getAttribute('id');
   const index = parseInt(listId.substring(1), 10);
-  editTask.addEventListener('keyup', () => {
-    const newTasks = tasks.map((task) => {
-      if (task.index === index) {
-        return { ...task, description: editTask.innerHTML };
+  const descriptionBeforeEdit = editTask.innerHTML;
+
+  editTask.addEventListener('input', () => {
+    const updatedDescription = editTask.innerHTML;
+    updateTaskDescription(index, updatedDescription);
+  });
+
+  const trash = document.getElementsByClassName('newButton');
+  trash[0].addEventListener('click', () => {
+    deleteList(index);
+  });
+
+  function updateTaskDescription(taskIndex, updatedDescription) {
+    tasks = tasks.map((task) => {
+      if (task.index === taskIndex) {
+        return { ...task, description: updatedDescription };
       }
       return task;
     });
-    localStorage.setItem('tasks', JSON.stringify(newTasks));
-  });
-  const trash = document.getElementsByClassName('newButton');
-  trash[0].addEventListener('click', deleteList);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  function deleteList(taskIndex) {
+    tasks = tasks.filter((task) => task.index !== taskIndex);
+    for (let i = 0; i < tasks.length; i += 1) {
+      tasks[i].index = i + 1;
+    }
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    window.location.reload();
+  }
 }
+
+
