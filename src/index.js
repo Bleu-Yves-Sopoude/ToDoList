@@ -1,5 +1,5 @@
 
-import '/Users/mrblue/Music/Microverse/Module 2/Projects/ToDoList/src/styles.css';
+import '../src/styles.css';
 
 import populateHtmlForEachTask from '../modules/populateHtmlForEachTask.js';
 
