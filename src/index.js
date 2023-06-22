@@ -1,36 +1,46 @@
-import './styles.css';
+import './styles/style.css';
+import addTrash from './modules/function.js';
 
-let taskList = [];
+const input = document.getElementById('input');
 
-function taskCreator(str) {
-  const task = {
-    description: `${str}`,
-    completed: false,
-    index: taskList.length,
-  };
-  taskList = taskList.concat(task);
+const target = document.getElementById('list');
+
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+function saveToLocalStorage(data) {
+  tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks.push(data);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-taskCreator('wash the dishes');
-taskCreator('complete the To Do List Project');
+input.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    const inputValue = input.value;
+    const newObj = {
+      description: inputValue,
+      completed: false,
+      index: tasks.length + 1,
+    };
+    saveToLocalStorage(newObj);
+    window.location.reload();
+    input.value = '';
+  }
+});
 
-localStorage.taskListData = JSON.stringify(taskList);
-
-const taskShelf = document.querySelector('#to-do-list__shelf');
-
-function printHTML(description, status, index) {
-  taskShelf.insertAdjacentHTML(
-    'beforeend',
-    `<div class="to-do-list__box" index="${index}" completed="${status}">
-<div class="d-row box__icon-text-wraper">
-<i class="bi bi-square to-do-box__check-box-icon"></i>
-<p class="box__text--incomplete">${description}</p>
-</div>
-<i class="bi bi-three-dots-vertical to-do-box__three-dots-icon"></i>
-</div>`,
-  );
+for (let i = 0; i < tasks.length; i += 1) {
+  const { index, description } = tasks[i];
+  target.innerHTML += `
+      <li id="L${index}" class ="common">
+      <input for ="P${index}" id="input" type="checkbox" class ="checkbox">
+      <p id ="P${index}" class="li-p">${description}</p>
+      <button id="edit-remove${index}"  class="btn dots list-item">
+       <i class="fa fa-ellipsis-v"></i>
+      </button>
+      </li>
+    `;
 }
 
-for (let i = 0; i < taskList.length; i += 1) {
-  printHTML(taskList[i].description, taskList[i].completed, taskList[i].index);
-}
+const deleteBtn = document.querySelectorAll('.list-item');
+deleteBtn.forEach((button) => {
+  button.addEventListener('click', addTrash);
+});
