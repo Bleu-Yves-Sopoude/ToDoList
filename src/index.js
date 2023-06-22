@@ -1,5 +1,4 @@
-
-import '../src/styles.css';
+import './styles.css';
 
 import populateHtmlForEachTask from '../modules/populateHtmlForEachTask.js';
 
