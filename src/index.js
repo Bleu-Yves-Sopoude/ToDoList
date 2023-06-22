@@ -1,46 +1,59 @@
-import './styles/style.css';
-import addTrash from './modules/function.js';
+import './styles.css';
 
-const input = document.getElementById('input');
+import populateHtmlForEachTask from '../modules/populateHtmlForEachTask.js';
 
-const target = document.getElementById('list');
+import TasksList from '../modules/tasksListClass.js';
 
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+const tasks = new TasksList();
 
-function saveToLocalStorage(data) {
-  tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks.push(data);
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+const storedTasks = JSON.parse(localStorage.getItem('storedTasks')) || [];
+populateHtmlForEachTask(storedTasks);
 
-input.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    const inputValue = input.value;
-    const newObj = {
-      description: inputValue,
-      completed: false,
-      index: tasks.length + 1,
-    };
-    saveToLocalStorage(newObj);
-    window.location.reload();
-    input.value = '';
+const taskDescription = document.querySelector('#taskDescription');
+const taskValidation = document.querySelector('#taskValidation');
+
+taskValidation.addEventListener('click', () => {
+  let addedTask = {};
+  if (taskDescription.value === '') {
+    document.querySelector('.error-message').textContent = "Please, the task's description is required";
+  }
+  if (taskDescription.value !== '') {
+    document.querySelector('.error-message').textContent = '';
+    addedTask = { description: taskDescription.value };
+    document.querySelectorAll('.task-box').forEach((e) => e.remove());
+    populateHtmlForEachTask(tasks.addTask(addedTask));
+  }
+  taskDescription.value = '';
+});
+
+const toDoListBox = document.querySelector('.to-do-list-box');
+toDoListBox.addEventListener('click', (e) => {
+  if (e.target && e.target.matches('i.trash')) {
+    const index = Number(e.target.id.replace('d', ''));
+    document.querySelectorAll('.task-box').forEach((e) => e.remove());
+    populateHtmlForEachTask(tasks.deleteTask(index));
+  }
+
+  if (e.target && e.target.matches('i.edit')) {
+    const targetClassList = e.target.classList;
+    document.querySelector(`p.${targetClassList[0]}`).focus();
+  }
+
+  if (e.target && e.target.matches('input.check-box')) {
+    const targetClassList = e.target.classList;
+    tasks.changeTaskStatus(Number(targetClassList[0].replace('checkBox', '')));
   }
 });
 
-for (let i = 0; i < tasks.length; i += 1) {
-  const { index, description } = tasks[i];
-  target.innerHTML += `
-      <li id="L${index}" class ="common">
-      <input for ="P${index}" id="input" type="checkbox" class ="checkbox">
-      <p id ="P${index}" class="li-p">${description}</p>
-      <button id="edit-remove${index}"  class="btn dots list-item">
-       <i class="fa fa-ellipsis-v"></i>
-      </button>
-      </li>
-    `;
-}
+toDoListBox.addEventListener('input', (e) => {
+  if (e.target && e.target.matches('p')) {
+    const targetClassList = e.target.classList;
+    tasks.editTask(Number(targetClassList[0].replace('d', '')));
+  }
+});
 
-const deleteBtn = document.querySelectorAll('.list-item');
-deleteBtn.forEach((button) => {
-  button.addEventListener('click', addTrash);
+document.querySelector('.clear-all-completed').addEventListener('click', () => {
+  tasks.clearAllCompleted();
+  document.querySelectorAll('.task-box').forEach((e) => e.remove());
+  populateHtmlForEachTask(tasks.clearAllCompleted());
 });
