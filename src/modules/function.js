@@ -41,6 +41,15 @@ export default function addTrash(event) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
+  function deleteList(taskIndex) {
+    tasks = tasks.filter((task) => task.index !== taskIndex);
+    tasks.forEach((task, i) => {
+      task.index = i + 1;
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    window.location.reload();
+  }
+
   editTask.addEventListener('input', () => {
     const updatedDescription = editTask.innerHTML;
     updateTaskDescription(index, updatedDescription);
@@ -50,15 +59,6 @@ export default function addTrash(event) {
   trash[0].addEventListener('click', () => {
     deleteList(index);
   });
-
-  function deleteList(taskIndex) {
-    tasks = tasks.filter((task) => task.index !== taskIndex);
-    tasks.forEach((task, i) => {
-      task.index = i + 1;
-    });
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    window.location.reload();
-  }
 }
 
 
