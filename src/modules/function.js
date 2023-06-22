@@ -19,8 +19,10 @@ export default function addTrash(event) {
   const index = parseInt(listId.substring(1), 10);
 
   function updateTaskDescription(taskIndex, updatedDescription) {
-    tasks = tasks.map((task) => (task.index === taskIndex ? { ...task, description: updatedDescription } : task));
-    localStorage.setItem('tasks', JSON.stringify(tasks));}
+    tasks = tasks.map((task) => (task.index === taskIndex ? 
+      { ...task, description: updatedDescription } : task));
+    localStorage.setItem('tasks', JSON.stringify(tasks)); 
+  }
 
   function deleteList(taskIndex) {
     tasks = tasks.filter((task) => task.index !== taskIndex);
