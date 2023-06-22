@@ -1,6 +1,6 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-function deleteList() {
+/*function deleteList() {
   const button = document.querySelectorAll('.newButton');
   const element = button[0].parentNode;
   const liItem = element.parentNode;
@@ -14,6 +14,7 @@ function deleteList() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
   window.location.reload();
 }
+*/
 
 export default function addTrash(event) {
   const eventCatcher = event.target.closest('button');
@@ -32,7 +33,13 @@ export default function addTrash(event) {
   editTask.setAttribute('contenteditable', true);
   const listId = parentLi.getAttribute('id');
   const index = parseInt(listId.substring(1), 10);
-  const descriptionBeforeEdit = editTask.innerHTML;
+
+  function updateTaskDescription(taskIndex, updatedDescription) {
+    tasks = tasks.map((task) =>
+      task.index === taskIndex ? { ...task, description: updatedDescription } : task
+    );
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 
   editTask.addEventListener('input', () => {
     const updatedDescription = editTask.innerHTML;
@@ -44,24 +51,15 @@ export default function addTrash(event) {
     deleteList(index);
   });
 
-  function updateTaskDescription(taskIndex, updatedDescription) {
-    tasks = tasks.map((task) => {
-      if (task.index === taskIndex) {
-        return { ...task, description: updatedDescription };
-      }
-      return task;
-    });
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
-
   function deleteList(taskIndex) {
     tasks = tasks.filter((task) => task.index !== taskIndex);
-    for (let i = 0; i < tasks.length; i += 1) {
-      tasks[i].index = i + 1;
-    }
+    tasks.forEach((task, i) => {
+      task.index = i + 1;
+    });
     localStorage.setItem('tasks', JSON.stringify(tasks));
     window.location.reload();
   }
 }
+
 
 
