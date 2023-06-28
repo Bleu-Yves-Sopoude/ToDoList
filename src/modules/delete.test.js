@@ -1,4 +1,4 @@
-const deleteList = require('../modules/delete');
+const deleteList = require('./delete.js');
 
 // Mocking localStorage and window.location
 const localStorageMock = (() => {
@@ -10,12 +10,12 @@ const localStorageMock = (() => {
     }),
     clear: jest.fn(() => {
       store = {};
-    })
+    }),
   };
 })();
 
 const locationMock = {
-  reload: jest.fn()
+  reload: jest.fn(),
 };
 
 // Test the deleteList function
@@ -33,7 +33,7 @@ describe('deleteList', () => {
     const tasks = [
       { index: 1, description: 'Task 1' },
       { index: 2, description: 'Task 2' },
-      { index: 3, description: 'Task 3' }
+      { index: 3, description: 'Task 3' },
     ];
     localStorageMock.getItem.mockReturnValue(JSON.stringify(tasks));
 
@@ -45,7 +45,7 @@ describe('deleteList', () => {
     expect(localStorageMock.getItem.mock.calls.length).toBe(1);
     expect(localStorageMock.setItem).toHaveBeenCalledWith('tasks', JSON.stringify([
       { index: 1, description: 'Task 1' },
-      { index: 2, description: 'Task 3' }
+      { index: 2, description: 'Task 3' },
     ]));
     expect(locationMock.reload).toHaveBeenCalled();
   });
