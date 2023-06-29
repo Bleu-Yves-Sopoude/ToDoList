@@ -1,4 +1,4 @@
-const deleteList = require("./delete.js");
+const deleteList = require('./delete.js');
 
 // Mocking localStorage and window.location
 const localStorageMock = (() => {
@@ -19,7 +19,7 @@ const locationMock = {
 };
 
 // Test the deleteList function
-describe("deleteList", () => {
+describe('deleteList', () => {
   beforeEach(() => {
     // Clear tasks in localStorage before each test
     localStorageMock.clear();
