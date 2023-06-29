@@ -1,4 +1,5 @@
-import { updateTaskStatus } from './updateStatus.js';
+//import { updateTaskStatus } from './updateStatus.js';
+const updateTaskStatus = require('./updateStatus.js');
 
 describe('updateTaskStatus', () => {
   test('updates task status and calls saveTasks', () => {
