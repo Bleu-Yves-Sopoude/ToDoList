@@ -1,5 +1,5 @@
-//import the clearCompletedTasks function correctly
 const { clearCompletedTasks } = require('./clearAll.js');
+
 describe('clearCompletedTasks', () => {
   test('clears completed tasks and calls saveTasks', () => {
     // Define the necessary variables for the test case
@@ -7,7 +7,7 @@ describe('clearCompletedTasks', () => {
     const tasks = [
       { description: 'Task 1', completed: false },
       { description: 'Task 2', completed: true },
-      { description: 'Task 3', completed: true }
+      { description: 'Task 3', completed: true },
     ];
     // Call the function to be tested
     clearCompletedTasks(tasks, mockSaveTasks);
@@ -17,8 +17,5 @@ describe('clearCompletedTasks', () => {
     expect(mockSaveTasks).toHaveBeenCalled();
   });
 });
-
-
-
 
 

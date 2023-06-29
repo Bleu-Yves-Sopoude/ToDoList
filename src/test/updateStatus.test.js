@@ -9,9 +9,9 @@ describe("updateTaskStatus", () => {
     const mockSaveTasks = jest.fn();
 
     const tasks = [
-      { description: "Task 1" },
-      { description: "Task 2" },
-      { description: "Task 3" },
+      { description: 'Task 1' },
+      { description: 'Task 2' },
+      { description: 'Task 3' },
     ];
 
     updateTaskStatus(index, completed, tasks, mockSaveTasks);

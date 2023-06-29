@@ -1,5 +1,5 @@
 // Import the function to be tested
-const { editTaskDescription } = require('./editDescription');
+const { editTaskDescription } = require('./editDescription.js');
 
 // Define the describe block
 describe('editTaskDescription', () => {
