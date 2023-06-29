@@ -15,7 +15,7 @@ describe('editTaskDescription', () => {
     const tasks = [
       { description: 'Task 1' },
       { description: 'Task 2' },
-      { description: 'Task 3' }
+      { description: 'Task 3' },
     ];
 
     // Call the function to be tested

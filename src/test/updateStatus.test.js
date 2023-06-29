@@ -1,4 +1,4 @@
-import { updateTaskStatus } from './updateStatus.js';
+import { updateTaskStatus } from '../updateStatus.js';
 
 describe('updateTaskStatus', () => {
   test('updates task status and calls saveTasks', () => {
