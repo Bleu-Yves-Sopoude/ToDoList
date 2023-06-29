@@ -1,4 +1,4 @@
-import { updateTaskStatus } from '../updateStatus.js';
+import { updateTaskStatus } from './updateStatus.js';
 
 describe('updateTaskStatus', () => {
   test('updates task status and calls saveTasks', () => {
@@ -10,7 +10,7 @@ describe('updateTaskStatus', () => {
     const tasks = [
       { description: 'Task 1' },
       { description: 'Task 2' },
-      { description: 'Task 3' },
+      { description: 'Task 3' }
     ];
 
     updateTaskStatus(index, completed, tasks, mockSaveTasks);
