@@ -8,7 +8,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Felipe Portfolio ](#-felipe-portfolio-)
+- [📖 To do List Project ](#-to-do-list-project-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -25,11 +25,11 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Felipe Portfolio <a name="about-project"></a>
+# 📖 To do List Project <a name="about-project"></a>
 
 > Describe your project in 1 or 2 sentences.
 
-**Bleu Yves Sopoude Portfolio** is a responsive webpage who can open in mobile and desktop too with differents section such as, nav bar, portfolio, projects about section and a working form.
+Is a project exercise given by Microverse to help me learn how to use webpack files and to build a basic website that allows users to make their to-do list by adding tasks and removing the completed ones.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -43,9 +43,12 @@ HTML5  CSS3 JS
 ### Key Features <a name="key-features"></a>
 
 
-- **LOVE**
-- **PASSION**
-- **CODING**
+- **[HTML Form]**
+- **[css flexbox ]**
+- **[Semantic tags]**
+- **[ Javascript ]**
+- **[ ES6 modules ]**
+- **[ webpack ]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,7 +76,9 @@ Create a GitHub acount an clone this repository
 
 In order to run this project you need:
 
-a Browser who support Html5 and Css3
+- Web browser
+- Git-syn
+- Code editor
 
 <!--
 Example command:
@@ -89,7 +94,7 @@ Clone this repository to your desired folder:
 
 
   cd my-folder
-  git clone https://github.com/Bleu-Yves-Sopoude/mb-portfolio.git
+  git clone https://github.com/Bleu-Yves-Sopoude/ToDoList
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
