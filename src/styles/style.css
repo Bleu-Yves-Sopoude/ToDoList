@@ -8,7 +8,6 @@ body {
   background-color: whitesmoke;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 .container {
   display: flex;
   flex-direction: column;
