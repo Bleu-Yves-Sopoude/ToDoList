@@ -17,5 +17,3 @@ describe('clearCompletedTasks', () => {
     expect(mockSaveTasks).toHaveBeenCalled();
   });
 });
-
-

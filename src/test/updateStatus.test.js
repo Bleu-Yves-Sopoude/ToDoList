@@ -1,8 +1,7 @@
-// Path: src/test/updateStatus.test.js
-import { updateTaskStatus } from "./updateStatus.js";
+import { updateTaskStatus } from './updateStatus.js';
 
-describe("updateTaskStatus", () => {
-  test("updates task status and calls saveTasks", () => {
+describe('updateTaskStatus', () => {
+  test('updates task status and calls saveTasks', () => {
     const index = 1;
     const completed = true;
 

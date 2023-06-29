@@ -3,4 +3,4 @@ function updateTaskStatus(index, completed, tasks, saveTasks) {
   saveTasks();
 }
 
-export { updateTaskStatus };
+export default updateTaskStatus;
