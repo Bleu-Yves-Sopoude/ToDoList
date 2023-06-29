@@ -108,7 +108,9 @@ Clone this repository to your desired folder:
 
 - Linkedin: [@Bleu-Yves-Sopoude](https://twitter.com/bleuYves)
 
-👤 **Chaw Ma Ma Win**
+👤 **Peter-Kibet**
+
+- GitHub: [@Peter-Kibet](https://github.com/Peter-Kibet)
 
 - GitHub: [@Peter-Kibet](https://github.com/Peter-Kibet)
 
