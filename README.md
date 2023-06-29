@@ -7,33 +7,29 @@
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
-- [📝 License](#license)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 To do List Project ](#-to-do-list-project-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Felipe Portfolio <a name="about-project"></a>
+# 📖 To do List Project <a name="about-project"></a>
 
 > Describe your project in 1 or 2 sentences.
 
-**Bleu Yves Sopoude Portfolio** is a responsive webpage who can open in mobile and desktop too with differents section such as, nav bar, portfolio, projects about section and a working form.
+Is a project exercise given by Microverse to help me learn how to use webpack files and to build a basic website that allows users to make their to-do list by adding tasks and removing the completed ones.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -47,9 +43,12 @@ HTML5  CSS3 JS
 ### Key Features <a name="key-features"></a>
 
 
-- **LOVE**
-- **PASSION**
-- **CODING**
+- **[HTML Form]**
+- **[css flexbox ]**
+- **[Semantic tags]**
+- **[ Javascript ]**
+- **[ ES6 modules ]**
+- **[ webpack ]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -59,7 +58,7 @@ HTML5  CSS3 JS
 
 > Add a link to your deployed project.
 
-- [Live Demo Link](https://bleu-yves-sopoude.github.io/)
+- [Comming soon]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -77,7 +76,9 @@ Create a GitHub acount an clone this repository
 
 In order to run this project you need:
 
-a Browser who support Html5 and Css3
+- Web browser
+- Git-syn
+- Code editor
 
 <!--
 Example command:
@@ -93,7 +94,7 @@ Clone this repository to your desired folder:
 
 
   cd my-folder
-  git clone https://github.com/Bleu-Yves-Sopoude/mb-portfolio.git
+  git clone https://github.com/Bleu-Yves-Sopoude/ToDoList
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,9 +113,11 @@ Clone this repository to your desired folder:
 
 - Linkedin: [@Bleu-Yves-Sopoude](https://twitter.com/bleuYves)
 
-👤 **Chaw Ma Ma Win**
+👤 **Peter-Kibet**
 
-- GitHub: [@Chaw-Ma-Ma-Win](https://github.com/Chaw-Ma-Ma-Win)
+- GitHub: [@Peter-Kibet](https://github.com/Peter-Kibet)
+
+- GitHub: [@Peter-Kibet](https://github.com/Peter-Kibet)
 
 
 
