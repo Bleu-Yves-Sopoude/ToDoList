@@ -1,4 +1,4 @@
-const deleteList = require('./delete.js');
+const deleteList = require("./delete.js");
 
 // Mocking localStorage and window.location
 const localStorageMock = (() => {
@@ -19,27 +19,37 @@ const locationMock = {
 };
 
 // Test the deleteList function
-describe('deleteList', () => {
+describe("deleteList", () => {
   beforeEach(() => {
     // Clear tasks in localStorage before each test
     localStorageMock.clear();
     jest.clearAllMocks();
-    Object.defineProperty(global, 'localStorage', { value: localStorageMock });
-    Object.defineProperty(global, 'location', { value: locationMock });
+    Object.defineProperty(global, "localStorage", { value: localStorageMock });
+    Object.defineProperty(global, "location", { value: locationMock });
   });
 
-  it('should delete a task with the given index and update the remaining task indices', () => {
+  it("should delete a task with the given index and update the remaining task indices", () => {
     // Arrange
     const tasks = [
-      { index: 1, description: 'Task 1' },
-      { index: 2, description: 'Task 2' },
-      { index: 3, description: 'Task 3' },
+      { index: 1, description: "Task 1" },
+      { index: 2, description: "Task 2" },
+      { index: 3, description: "Task 3" },
     ];
     localStorageMock.getItem.mockReturnValue(JSON.stringify(tasks));
 
     // Act
     deleteList(2, tasks);
 
-    
+    // Assert
+    expect(localStorageMock.getItem).toHaveBeenCalledWith("tasks");
+    expect(localStorageMock.getItem.mock.calls.length).toBe(1);
+    expect(localStorageMock.setItem).toHaveBeenCalledWith(
+      "tasks",
+      JSON.stringify([
+        { index: 1, description: "Task 1" },
+        { index: 2, description: "Task 3" },
+      ])
+    );
+    expect(locationMock.reload).toHaveBeenCalled();
   });
 });
