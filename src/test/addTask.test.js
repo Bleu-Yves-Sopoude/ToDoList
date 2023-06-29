@@ -1,4 +1,4 @@
-const addTask = require('../test/addTask');
+const addTask = require('./addTask');
 
 describe('addTask', () => {
   beforeEach(() => {
@@ -40,7 +40,7 @@ describe('addTask', () => {
         description,
         completed: false,
         index: index + 1,
-      }))
+      })),
     );
   });
 });

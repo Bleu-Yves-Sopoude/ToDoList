@@ -7,7 +7,8 @@
     "test": "jest",
     "start": "webpack serve --open",
     "build": "webpack",
-    "clean": "rd -rf dist"
+    "clean": "rd -rf dist",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "@babel/preset-env": "^7.22.5",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "node-sass": "^9.0.0",
     "sass-loader": "^13.3.2",
