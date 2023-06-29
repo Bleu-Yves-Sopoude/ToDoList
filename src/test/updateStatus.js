@@ -4,3 +4,5 @@ function updateTaskStatus(index, completed, tasks, saveTasks) {
 }
 
 export default { updateTaskStatus };
+
+
